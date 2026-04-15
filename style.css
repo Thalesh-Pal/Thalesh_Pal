@@ -545,6 +545,16 @@ footer {
   
   h2 {
     font-size: 2rem;
+    display: block;
+    left: auto;
+    transform: none;
+    text-align: center;
+  }
+
+  h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
   }
 }
 
@@ -577,6 +587,10 @@ footer {
   
   .hero-text {
     font-size: 0.9rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
   }
   
   .about-stats {
