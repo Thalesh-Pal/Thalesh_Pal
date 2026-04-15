@@ -569,3 +569,27 @@ footer {
     left: 1px;
   }
 }
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-text {
+    font-size: 0.9rem;
+  }
+  
+  .about-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline-title {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    display: block;
+    margin: var(--spacing-md) auto;
+    width: 100%;
+  }
+}
