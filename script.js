@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- 1. Navbar Scroll Effect ---
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- 2. Typewriter Effect in Hero ---
-    const textRoles = ["Workday Extend Developer", "HR Tech Innovator", "Generative AI Enthusiast", "System Architect"];
+    const textRoles = ["Workday Extend Developer", "HR Tech Innovator", "Generative AI Enthusiast", "Movework Developer", "Workday Integrations"];
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function typeWriter() {
         const currentRole = textRoles[roleIndex];
-        
+
         if (isDeleting) {
             typewriterElement.textContent = currentRole.substring(0, charIndex - 1);
             charIndex--;
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         update() {
             // Mouse Repel Logic
-            if(mouse.x != null && mouse.y != null) {
+            if (mouse.x != null && mouse.y != null) {
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
@@ -140,21 +140,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     if (this.x !== this.baseX) {
                         let dx = this.x - this.baseX;
-                        this.x -= dx/10;
+                        this.x -= dx / 10;
                     }
                     if (this.y !== this.baseY) {
                         let dy = this.y - this.baseY;
-                        this.y -= dy/10;
+                        this.y -= dy / 10;
                     }
                 }
             } else {
-                 if (this.x !== this.baseX) {
+                if (this.x !== this.baseX) {
                     let dx = this.x - this.baseX;
-                    this.x -= dx/10;
+                    this.x -= dx / 10;
                 }
                 if (this.y !== this.baseY) {
                     let dy = this.y - this.baseY;
-                    this.y -= dy/10;
+                    this.y -= dy / 10;
                 }
             }
 
@@ -164,10 +164,10 @@ document.addEventListener('DOMContentLoaded', () => {
             this.baseY += this.vy;
 
             // Constrain particles to screen
-            if(this.baseX > canvas.width) this.baseX = 0;
-            if(this.baseX < 0) this.baseX = canvas.width;
-            if(this.baseY > canvas.height) this.baseY = 0;
-            if(this.baseY < 0) this.baseY = canvas.height;
+            if (this.baseX > canvas.width) this.baseX = 0;
+            if (this.baseX < 0) this.baseX = canvas.width;
+            if (this.baseY > canvas.height) this.baseY = 0;
+            if (this.baseY < 0) this.baseY = canvas.height;
 
             this.draw();
         }
@@ -176,21 +176,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function initParticles() {
         particlesArray = [];
         let numberOfParticles = (canvas.height * canvas.width) / 9000;
-        
+
         for (let i = 0; i < numberOfParticles; i++) {
             let size = (Math.random() * 2) + 0.5;
             let x = Math.random() * innerWidth;
             let y = Math.random() * innerHeight;
             let vx = (Math.random() * 0.4) - 0.2;
             let vy = (Math.random() * 0.4) - 0.2;
-            
+
             // Randomly assign cyan or purple colors with varying opacities
             let colors = [
                 `rgba(0, 240, 255, ${Math.random() * 0.5 + 0.1})`,
                 `rgba(179, 77, 255, ${Math.random() * 0.5 + 0.1})`
             ];
             let color = colors[Math.floor(Math.random() * colors.length)];
-            
+
             particlesArray.push(new Particle(x, y, vx, vy, size, color));
         }
     }
@@ -200,11 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let opacityValue = 1;
         for (let a = 0; a < particlesArray.length; a++) {
             for (let b = a; b < particlesArray.length; b++) {
-                let distance = (( particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
-                + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                
-                if (distance < (canvas.width/10) * (canvas.height/10)) {
-                    opacityValue = 1 - (distance/20000);
+                let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                    + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+
+                if (distance < (canvas.width / 10) * (canvas.height / 10)) {
+                    opacityValue = 1 - (distance / 20000);
                     ctx.strokeStyle = `rgba(0, 240, 255, ${opacityValue * 0.15})`; // Faint cyan lines
                     ctx.lineWidth = 1;
                     ctx.beginPath();
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function animateParticles() {
         requestAnimationFrame(animateParticles);
         ctx.clearRect(0, 0, innerWidth, innerHeight);
-        
+
         for (let i = 0; i < particlesArray.length; i++) {
             particlesArray[i].update();
         }
